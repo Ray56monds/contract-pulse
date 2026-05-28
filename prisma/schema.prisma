@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String     @id @default(uuid())
+  name      String
+  plan      String     @default("free")
+  createdAt DateTime   @default(now()) @map("created_at")
+  users     User[]
+  vendors   Vendor[]
+  contracts Contract[]
+
+  @@map("organizations")
+}
+
+model User {
+  id               String       @id @default(uuid())
+  orgId            String       @map("org_id")
+  email            String       @unique
+  name             String?
+  role             String       @default("member")
+  alertPreferences Json         @default("{}") @map("alert_preferences")
+  createdAt        DateTime     @default(now()) @map("created_at")
+  organization     Organization @relation(fields: [orgId], references: [id])
+  notes            Note[]
+  alerts           Alert[]
+
+  @@map("users")
+}
+
+model Vendor {
+  id           String       @id @default(uuid())
+  orgId        String       @map("org_id")
+  name         String
+  category     String?
+  contactEmail String?      @map("contact_email")
+  totalSpend   Decimal      @default(0) @map("total_spend") @db.Decimal(12, 2)
+  createdAt    DateTime     @default(now()) @map("created_at")
+  organization Organization @relation(fields: [orgId], references: [id])
+  contracts    Contract[]
+
+  @@map("vendors")
+}
+
+model Contract {
+  id               String         @id @default(uuid())
+  orgId            String         @map("org_id")
+  vendorId         String         @map("vendor_id")
+  uploadedBy       String         @map("uploaded_by")
+  title            String
+  status           String         @default("active")
+  annualValue      Decimal        @map("annual_value") @db.Decimal(12, 2)
+  startDate        DateTime       @map("start_date") @db.Date
+  endDate          DateTime       @map("end_date") @db.Date
+  autoRenew        Boolean        @default(false) @map("auto_renew")
+  noticePeriodDays Int?           @map("notice_period_days")
+  fileUrl          String?        @map("file_url")
+  riskLevel        String         @default("low") @map("risk_level")
+  createdAt        DateTime       @default(now()) @map("created_at")
+  organization     Organization   @relation(fields: [orgId], references: [id])
+  vendor           Vendor         @relation(fields: [vendorId], references: [id])
+  terms            ContractTerm[]
+  alerts           Alert[]
+  notes            Note[]
+
+  @@map("contracts")
+}
+
+model ContractTerm {
+  id         String   @id @default(uuid())
+  contractId String   @map("contract_id")
+  termType   String   @map("term_type")
+  termValue  String   @map("term_value")
+  rawText    String?  @map("raw_text")
+  confidence Float    @default(0)
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+
+  @@map("contract_terms")
+}
+
+model Alert {
+  id           String    @id @default(uuid())
+  contractId   String    @map("contract_id")
+  userId       String    @map("user_id")
+  alertType    String    @map("alert_type")
+  daysBefore   Int       @map("days_before")
+  scheduledFor DateTime  @map("scheduled_for")
+  sentAt       DateTime? @map("sent_at")
+  status       String    @default("pending")
+  contract     Contract  @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  user         User      @relation(fields: [userId], references: [id])
+
+  @@map("alerts")
+}
+
+model Note {
+  id         String   @id @default(uuid())
+  contractId String   @map("contract_id")
+  userId     String   @map("user_id")
+  content    String
+  createdAt  DateTime @default(now()) @map("created_at")
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@map("notes")
+}
