@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Inter, -apple-system, sans-serif">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+    <linearGradient id="awsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9900;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#FF9900;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="vercelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#FAFAFA" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-size="24" font-weight="700" fill="#111">ContractPulse — Architecture Diagram</text>
+  <text x="600" y="62" text-anchor="middle" font-size="13" fill="#666">Track 2: Monetizable B2B App | AWS + Vercel Hackathon</text>
+
+  <!-- Vercel Platform Box -->
+  <rect x="30" y="85" width="540" height="580" rx="12" fill="url(#vercelGrad)" stroke="#E5E5E5" stroke-width="1.5"/>
+  <text x="50" y="112" font-size="14" font-weight="600" fill="#000">▲ Vercel Platform</text>
+
+  <!-- AWS Cloud Box -->
+  <rect x="630" y="85" width="540" height="580" rx="12" fill="url(#awsGrad)" stroke="#FF9900" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="650" y="112" font-size="14" font-weight="600" fill="#C27200">☁ AWS Cloud</text>
+
+  <!-- User Browser -->
+  <rect x="200" y="130" width="200" height="60" rx="8" fill="#FFF" stroke="#DDD" filter="url(#shadow)"/>
+  <text x="300" y="155" text-anchor="middle" font-size="11" fill="#888">CLIENT</text>
+  <text x="300" y="175" text-anchor="middle" font-size="14" font-weight="600" fill="#333">🌐 User Browser</text>
+
+  <!-- Next.js App -->
+  <rect x="60" y="230" width="220" height="90" rx="8" fill="#FFF" stroke="#000" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="170" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#000">Next.js 14 (App Router)</text>
+  <text x="170" y="278" text-anchor="middle" font-size="11" fill="#666">React Server Components</text>
+  <text x="170" y="296" text-anchor="middle" font-size="11" fill="#666">Tailwind CSS + shadcn/ui</text>
+
+  <!-- API Routes -->
+  <rect x="320" y="230" width="220" height="90" rx="8" fill="#FFF" stroke="#000" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="430" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#000">API Routes</text>
+  <text x="430" y="278" text-anchor="middle" font-size="11" fill="#666">NextAuth.js (JWT Sessions)</text>
+  <text x="430" y="296" text-anchor="middle" font-size="11" fill="#666">Prisma ORM Queries</text>
+
+  <!-- Vercel Cron -->
+  <rect x="60" y="360" width="220" height="70" rx="8" fill="#FFF" stroke="#000" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="170" y="388" text-anchor="middle" font-size="12" font-weight="600" fill="#000">⏰ Vercel Cron Jobs</text>
+  <text x="170" y="408" text-anchor="middle" font-size="11" fill="#666">Daily renewal check (8am UTC)</text>
+
+  <!-- Vercel Blob -->
+  <rect x="320" y="360" width="220" height="70" rx="8" fill="#FFF" stroke="#000" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="430" y="388" text-anchor="middle" font-size="12" font-weight="600" fill="#000">📦 Vercel Blob</text>
+  <text x="430" y="408" text-anchor="middle" font-size="11" fill="#666">Contract PDF Storage</text>
+
+  <!-- Middleware -->
+  <rect x="60" y="470" width="480" height="55" rx="8" fill="#F0F0F0" stroke="#CCC" filter="url(#shadow)"/>
+  <text x="300" y="495" text-anchor="middle" font-size="12" font-weight="600" fill="#333">🔒 Middleware (Route Protection)</text>
+  <text x="300" y="512" text-anchor="middle" font-size="11" fill="#666">Auth guard on /dashboard, /contracts, /vendors, /settings</text>
+
+  <!-- Prisma -->
+  <rect x="180" y="560" width="240" height="55" rx="8" fill="#2D3748" filter="url(#shadow)"/>
+  <text x="300" y="585" text-anchor="middle" font-size="12" font-weight="600" fill="#FFF">Prisma ORM</text>
+  <text x="300" y="602" text-anchor="middle" font-size="11" fill="#CBD5E0">Type-safe DB access + Migrations</text>
+
+  <!-- Aurora PostgreSQL -->
+  <rect x="680" y="150" width="440" height="120" rx="8" fill="#FFF" stroke="#FF9900" stroke-width="2" filter="url(#shadow)"/>
+  <text x="900" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#C27200">Amazon Aurora PostgreSQL</text>
+  <text x="900" y="200" text-anchor="middle" font-size="12" fill="#666">Serverless v2 | Auto-scaling 0.5–4 ACU</text>
+  <text x="900" y="225" text-anchor="middle" font-size="11" fill="#888">Writer Endpoint: contractpulse-cluster.cluster-*.us-east-1.rds.amazonaws.com</text>
+  <text x="900" y="248" text-anchor="middle" font-size="11" fill="#555">Tables: organizations, users, vendors, contracts, contract_terms, alerts, notes</text>
+
+  <!-- Amazon Textract -->
+  <rect x="680" y="310" width="440" height="90" rx="8" fill="#FFF" stroke="#FF9900" stroke-width="2" filter="url(#shadow)"/>
+  <text x="900" y="340" text-anchor="middle" font-size="14" font-weight="700" fill="#C27200">Amazon Textract</text>
+  <text x="900" y="360" text-anchor="middle" font-size="12" fill="#666">AnalyzeDocument API (FORMS + TABLES)</text>
+  <text x="900" y="380" text-anchor="middle" font-size="11" fill="#888">Extracts: renewal dates, notice periods, payment terms, liability clauses</text>
+
+  <!-- Amazon SES -->
+  <rect x="680" y="440" width="200" height="70" rx="8" fill="#FFF" stroke="#FF9900" stroke-width="2" filter="url(#shadow)"/>
+  <text x="780" y="468" text-anchor="middle" font-size="12" font-weight="600" fill="#C27200">Amazon SES</text>
+  <text x="780" y="488" text-anchor="middle" font-size="11" fill="#666">Email Alerts</text>
+
+  <!-- IAM -->
+  <rect x="920" y="440" width="200" height="70" rx="8" fill="#FFF" stroke="#FF9900" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1020" y="468" text-anchor="middle" font-size="12" font-weight="600" fill="#C27200">AWS IAM</text>
+  <text x="1020" y="488" text-anchor="middle" font-size="11" fill="#666">Scoped Textract Policy</text>
+
+  <!-- Arrows: User → Next.js -->
+  <line x1="250" y1="190" x2="170" y2="230" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <!-- User → API -->
+  <line x1="350" y1="190" x2="430" y2="230" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- API → Aurora -->
+  <line x1="540" y1="270" x2="680" y2="210" stroke="#FF9900" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="610" y="230" font-size="10" fill="#C27200" text-anchor="middle">Prisma</text>
+
+  <!-- API → Textract -->
+  <line x1="540" y1="290" x2="680" y2="350" stroke="#FF9900" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="610" y="330" font-size="10" fill="#C27200" text-anchor="middle">Parse PDF</text>
+
+  <!-- API → Blob -->
+  <line x1="430" y1="320" x2="430" y2="360" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+  <!-- Cron → Aurora -->
+  <line x1="280" y1="390" x2="680" y2="210" stroke="#FF9900" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Cron → SES -->
+  <line x1="280" y1="410" x2="680" y2="470" stroke="#FF9900" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Prisma → Aurora -->
+  <line x1="420" y1="585" x2="680" y2="250" stroke="#FF9900" stroke-width="2" stroke-dasharray="6,3"/>
+
+  <!-- Data Flow Legend -->
+  <rect x="680" y="550" width="440" height="100" rx="8" fill="#FFF" stroke="#E5E5E5" filter="url(#shadow)"/>
+  <text x="700" y="575" font-size="12" font-weight="600" fill="#333">Data Flow</text>
+  <text x="700" y="598" font-size="11" fill="#666">1. User uploads PDF → Vercel Blob stores file → Textract extracts terms</text>
+  <text x="700" y="616" font-size="11" fill="#666">2. Extracted terms saved to Aurora PostgreSQL via Prisma</text>
+  <text x="700" y="634" font-size="11" fill="#666">3. Daily cron checks renewals → sends alerts via SES</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>
