@@ -185,3 +185,11 @@ erDiagram
 - Prisma connection pooling via Vercel's edge config
 - Vercel ISR for dashboard pages (revalidate every 60s)
 - DynamoDB could be added later for high-frequency alert logs
+
+## Why Aurora PostgreSQL?
+
+1. **Serverless v2** — scales to zero during inactivity, cost-efficient for a SaaS product starting out
+2. **PostgreSQL compatibility** — rich JSON support for alert preferences, full-text search for contract terms
+3. **Production-grade** — same engine used by enterprises, automatic failover, point-in-time recovery
+4. **Prisma integration** — first-class support with type-safe queries and migrations
+5. **Read replicas** — can offload analytics queries as the product scales
